@@ -3,19 +3,20 @@ import java.util.Scanner;
 public class stringMethodTask {
     public static void main(String[] args) {
     Scanner sc=new Scanner(System.in);
-        String text, char1, char2, char3, char4,phrase1,phrase2,phrase3,phrase4,deletphrase;
+        String text, phrase1,phrase2,phrase3,phrase4,deletphrase;
+        char char1, char2, char3, char4;
         System.out.println("please enter a text:");
         text=sc.nextLine();
         NumberOfChars(text);
         System.out.println("Please enter the Character you wish to replace:");
-        char1=sc.nextLine();
+        char1=sc.nextLine().charAt(0);
         System.out.println("Please enter the Character you wish to replace with:");
-        char2=sc.nextLine();
+        char2=sc.nextLine().charAt(0);
         System.out.println("The result of replacing only one character is: \n" +replaceChar(text, char1,char2));
         System.out.println("Please enter the Character you wish to replace the new character with all of it:");
-        char3=sc.nextLine();
+        char3=sc.nextLine().charAt(0);
         System.out.println("Please enter the Character you wish to replace with all the previous selected character:");
-        char4=sc.nextLine();
+        char4=sc.nextLine().charAt(0);
         System.out.println("The result of replacing one character with all is: \n" +replaceAllChar(text, char3,char4));
         System.out.println("Please enter the phrase you wish to replace:");
         phrase1=sc.nextLine();
@@ -46,15 +47,15 @@ public class stringMethodTask {
         return;
     }
 
-        public static String replaceChar (String inputText, String firstchar, String secondchar){
+        public static String replaceChar (String inputText, char firstchar, char secondchar){
             StringBuilder result = new StringBuilder(inputText);
             int index = inputText.indexOf(firstchar);
-            result.replace(index, firstchar.length(), secondchar);
+            result.replace(index, index+1, String.valueOf(secondchar));
             return result.toString();
 
         }
 
-        public static String replaceAllChar(String inputText, String firstchar, String secondchar){
+        public static String replaceAllChar(String inputText, char firstchar, char secondchar){
             String newreplaced = inputText.replace(firstchar, secondchar);
             return newreplaced;
 
